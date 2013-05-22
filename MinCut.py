@@ -1,3 +1,7 @@
+'''
+__author__      = "Hongwei Jin"
+__Time__        = "Talk topic at Math 554, April 30, 2013"
+'''
 import copy
 import math
 import random
