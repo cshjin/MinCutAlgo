@@ -5,6 +5,7 @@ __Time__        = "Talk topic at Math 554, April 30, 2013"
 import copy
 import math
 import random
+import matplotlib as mpt
 
 def MinCut(graph, t):
     while len(graph) > t:
