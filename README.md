@@ -14,4 +14,4 @@ Reference:
 
 * Karger, David R., and Clifford Stein. "__A new approach to the minimum cut problem.__" Journal of the ACM (JACM) 43.4 (1996): 601-640.
 
-** Karger, David R., and Debmalya Panigrahi. "__A near-linear time algorithm for constructing a cactus representation of minimum cuts.__" Proceedings of the twentieth Annual ACM-SIAM Symposium on Discrete Algorithms. Society for Industrial and Applied Mathematics, 2009.
+* Karger, David R., and Debmalya Panigrahi. "__A near-linear time algorithm for constructing a cactus representation of minimum cuts.__" Proceedings of the twentieth Annual ACM-SIAM Symposium on Discrete Algorithms. Society for Industrial and Applied Mathematics, 2009.
