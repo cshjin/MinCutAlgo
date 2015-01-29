@@ -1,6 +1,11 @@
 '''
 __author__      = "Hongwei Jin"
+<<<<<<< HEAD
 __modified__    = "New features in Math 565, Nov. 2013"
+=======
+__Time__        = "Talk topic at Math 554, April 30, 2013"
+__modified__    = "New features in Mathe 565, Nov. 2013"
+>>>>>>> origin/master
 '''
 
 import copy
@@ -70,7 +75,11 @@ def main():
         edge_list.append(len(edges))
     file1.close()
 
+<<<<<<< HEAD
     ## generate adjacency matrix, for visualization
+=======
+    ## generate adjacency matrix, for other purpose
+>>>>>>> origin/master
     f = open('../data/matrix.txt', 'w')
     for j in range(1, len(graph) + 1):
         for i in range(1, 201):
