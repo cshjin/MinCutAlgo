@@ -1,18 +1,9 @@
-'''
-__author__      = "Hongwei Jin"
-<<<<<<< HEAD
-__modified__    = "New features in Math 565, Nov. 2013"
-=======
-__Time__        = "Talk topic at Math 554, April 30, 2013"
-__modified__    = "New features in Mathe 565, Nov. 2013"
->>>>>>> origin/master
-'''
-
 import copy
 import math
 import random
 import matplotlib as mpt
 import os
+
 
 def MinCut(graph, t):
     # print len(graph)
@@ -26,7 +17,7 @@ def MinCut(graph, t):
         for edge in graph[finish]:
             if edge != start:  # this stops us from making a self-loop
                 graph[start].append(edge)
-                
+
     # # Deleting the references to the absorbed node and changing them to the source node:
         for edge1 in graph[finish]:
             graph[edge1].remove(finish)
@@ -40,11 +31,12 @@ def MinCut(graph, t):
     # print graph
     return graph
 
+
 def FastMinCut(graph):
 
     if len(graph) < 6:
         return MinCut(graph, 2)
-    else :
+    else:
         t = 1 + int(len(graph) / math.sqrt(2))
         graph_1 = MinCut(graph, t)
         graph_2 = MinCut(graph, t)
@@ -52,10 +44,11 @@ def FastMinCut(graph):
             return FastMinCut(graph_2)
         else:
             return FastMinCut(graph_1)
-        
+
 #         return min(FastMinCut(graph_1), FastMinCut(graph_2))
 
-def main():  
+
+def main():
     # os.system("python gen_ran_graph.py")
     filename = "../data/KargerMinCut.txt"
     file1 = open(filename)
@@ -69,17 +62,12 @@ def main():
         node = int(line.split()[0])
         edges = []
         for edge in line.split()[1:]:
-            edges.append(int(edge))      
+            edges.append(int(edge))
         graph[node] = edges
         edge_num = edge_num + len(edges)
         edge_list.append(len(edges))
     file1.close()
 
-<<<<<<< HEAD
-    ## generate adjacency matrix, for visualization
-=======
-    ## generate adjacency matrix, for other purpose
->>>>>>> origin/master
     f = open('../data/matrix.txt', 'w')
     for j in range(1, len(graph) + 1):
         for i in range(1, 201):
@@ -95,11 +83,11 @@ def main():
     i = 0
     while i < count:
         graph1 = copy.deepcopy(graph)
-        g = MinCut(graph1,2)
+        g = MinCut(graph1, 2)
         # g = FastMinCut(graph1)
         i += 1
-        
-    print "Total edges:     " , edge_num / 2
+
+    print "Total edges:     ", edge_num / 2
     print "Total vertices:  ", len(graph)
     print "Maximum degree:  ", max(edge_list)
     print "Minimum degree:  ", min(edge_list)
@@ -111,4 +99,4 @@ def main():
 
 
 if __name__ == '__main__':
-        main()  
+    main()
