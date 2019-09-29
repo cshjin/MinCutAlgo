@@ -6,27 +6,26 @@ import os
 
 
 def MinCut(graph, t):
-    # print len(graph)
     while len(graph) > t:
         # TODO: use importance sampling
-        start = random.choice(graph.keys())
+        start = random.choice(list(graph.keys()))
         finish = random.choice(graph[start])
 
         # print start, finish
-    # # Adding the edges from the absorbed node:
+        # # Adding the edges from the absorbed node:
         for edge in graph[finish]:
             if edge != start:  # this stops us from making a self-loop
                 graph[start].append(edge)
 
-    # # Deleting the references to the absorbed node and changing them to the source node:
-        for edge1 in graph[finish]:
-            graph[edge1].remove(finish)
-            if edge1 != start:  # this stops us from re-adding all the edges in start.
-                graph[edge1].append(start)
+        # # Deleting the references to the absorbed node and changing them to the source node:
+        for edge in graph[finish]:
+            graph[edge].remove(finish)
+            if edge != start:  # this stops us from re-adding all the edges in start.
+                graph[edge].append(start)
         del graph[finish]
 
     # # Calculating and recording the mincut
-    mincut = len(graph[graph.keys()[0]])
+    mincut = len(graph[list(graph.keys())[0]])
     cuts.append(mincut)
     # print graph
     return graph
@@ -45,20 +44,19 @@ def FastMinCut(graph):
         else:
             return FastMinCut(graph_1)
 
-#         return min(FastMinCut(graph_1), FastMinCut(graph_2))
+# return min(FastMinCut(graph_1), FastMinCut(graph_2))
 
 
 def main():
-    # os.system("python gen_ran_graph.py")
     filename = "../data/KargerMinCut.txt"
-    file1 = open(filename)
+    graph_file = open(filename)
     graph = {}
     global cuts
     cuts = []
     edge_num = 0
     edge_list = []
     # print "Loading from", filename
-    for line in file1:
+    for line in graph_file:
         node = int(line.split()[0])
         edges = []
         for edge in line.split()[1:]:
@@ -66,7 +64,7 @@ def main():
         graph[node] = edges
         edge_num = edge_num + len(edges)
         edge_list.append(len(edges))
-    file1.close()
+    graph_file.close()
 
     f = open('../data/matrix.txt', 'w')
     for j in range(1, len(graph) + 1):
@@ -87,15 +85,15 @@ def main():
         # g = FastMinCut(graph1)
         i += 1
 
-    print "Total edges:     ", edge_num / 2
-    print "Total vertices:  ", len(graph)
-    print "Maximum degree:  ", max(edge_list)
-    print "Minimum degree:  ", min(edge_list)
-    print "average degree:  ", sum(edge_list) / len(edge_list)
-    print "Runing times:    ", len(cuts)
-    # print cuts
-    # print "Maxcut is", max(cuts)
-    print "Mincut is        ", min(cuts)
+    print("Total edges:     ", edge_num / 2)
+    print("Total vertices:  ", len(graph))
+    print("Maximum degree:  ", max(edge_list))
+    print("Minimum degree:  ", min(edge_list))
+    print("average degree:  ", sum(edge_list) / len(edge_list))
+    print("Runing times:    ", len(cuts))
+    # print() cuts
+    # print() "Maxcut is", max(cuts)
+    print("Mincut is        ", min(cuts))
 
 
 if __name__ == '__main__':
